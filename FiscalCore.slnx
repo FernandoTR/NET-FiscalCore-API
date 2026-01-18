@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/Elementos de la solución/">
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/FiscalCore.Api/FiscalCore.Api.csproj" />
+    <Project Path="src/FiscalCore.Application/FiscalCore.Application.csproj" />
+    <Project Path="src/FiscalCore.Domain/FiscalCore.Domain.csproj" />
+    <Project Path="src/FiscalCore.Infrastructure/FiscalCore.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FiscalCore.UnitTests/FiscalCore.UnitTests.csproj" />
+  </Folder>
+</Solution>
