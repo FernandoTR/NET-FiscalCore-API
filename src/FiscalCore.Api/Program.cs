@@ -1,6 +1,7 @@
 using FiscalCore.Api;
 using FiscalCore.Application;
 using FiscalCore.Infrastructure;
+using FiscalCore.Infrastructure.Security.Encryption;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,16 @@ builder.Services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiIn
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 builder.Services.AddWeb();
+
+// Configuration validation at startup
+builder.Services
+    .AddOptions<EncryptionOptions>()
+    .Bind(builder.Configuration.GetSection(EncryptionOptions.SectionName))
+    .Validate(options =>
+        !string.IsNullOrWhiteSpace(options.AesKey) &&
+        !string.IsNullOrWhiteSpace(options.AesIv),
+        "Encryption configuration is invalid")
+    .ValidateOnStart();
 
 
 

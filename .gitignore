@@ -11,6 +11,9 @@
 *.sln.docstates
 *.env
 
+# Ignorar archivos de configuración con datos sensibles
+appsettings.*.json
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -426,3 +429,5 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+/src/FiscalCore.Api/appsettings.Development.json
+/src/FiscalCore.Api/appsettings.Development.json
