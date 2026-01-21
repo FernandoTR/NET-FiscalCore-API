@@ -126,6 +126,9 @@
   <data name="CertificateCreationFailed" xml:space="preserve">
     <value>Falló la creación del certificado.</value>
   </data>
+  <data name="CertificateDeleteFailed" xml:space="preserve">
+    <value>Error al eliminar el certificado.</value>
+  </data>
   <data name="CertificateExpired" xml:space="preserve">
     <value>El certificado del emisor se encuentra vencido.</value>
   </data>

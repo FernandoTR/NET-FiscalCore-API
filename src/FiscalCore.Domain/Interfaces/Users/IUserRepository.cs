@@ -1,6 +1,4 @@
-﻿using FiscalCore.Domain.Entities;
-
-namespace FiscalCore.Domain.Interfaces.Users;
+﻿namespace FiscalCore.Domain.Interfaces.Users;
 
 public interface IUserRepository
 {

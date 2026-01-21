@@ -1,6 +1,4 @@
-﻿using FiscalCore.Domain.Entities;
-
-namespace FiscalCore.Domain.Interfaces.Auth;
+﻿namespace FiscalCore.Domain.Interfaces.Auth;
 
 public interface IAuthTokenRepository
 {

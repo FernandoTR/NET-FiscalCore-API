@@ -120,8 +120,14 @@
   <data name="CertificateCreatedSuccessfully" xml:space="preserve">
     <value>Certificado creado exitosamente.</value>
   </data>
+  <data name="CertificateDeleteSuccessfully" xml:space="preserve">
+    <value>Certificado eliminado correctamente.</value>
+  </data>
   <data name="CertificateRetrievedSuccessfully" xml:space="preserve">
     <value>Certificado recuperado exitosamente</value>
+  </data>
+  <data name="CertificateUpdateSuccessfully" xml:space="preserve">
+    <value>Certificado actualizado con éxito.</value>
   </data>
   <data name="SchemaValidationSuccessfully" xml:space="preserve">
     <value>Validación del esquema realizada con éxito.</value>
