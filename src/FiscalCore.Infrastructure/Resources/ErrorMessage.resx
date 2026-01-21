@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CatalogKeyInactive" xml:space="preserve">
+    <value>La clave '{0}' del catálogo {1} se encuentra inactiva.</value>
+  </data>
+  <data name="CatalogKeyNotFound" xml:space="preserve">
+    <value>La clave '{0}' no existe en el catálogo {1} del SAT.</value>
+  </data>
+  <data name="CertificateCreationFailed" xml:space="preserve">
+    <value>Falló la creación del certificado.</value>
+  </data>
+  <data name="CertificateExpired" xml:space="preserve">
+    <value>El certificado del emisor se encuentra vencido.</value>
+  </data>
+  <data name="CertificateNotFound" xml:space="preserve">
+    <value>No se encontró un certificado válido para el RFC del emisor.</value>
+  </data>
+  <data name="CertificateNotFound2" xml:space="preserve">
+    <value>No se encontró un certificado</value>
+  </data>
+  <data name="CertificateNotFound3" xml:space="preserve">
+    <value>No se encontró el certificado activo para el RFC proporcionado.</value>
+  </data>
+  <data name="CertificateRevoked" xml:space="preserve">
+    <value>El certificado del emisor ha sido revocado.</value>
+  </data>
+  <data name="CertificateRfcMismatch" xml:space="preserve">
+    <value>El RFC del certificado no coincide con el RFC del emisor.</value>
+  </data>
+  <data name="CertificateUpdateFailed" xml:space="preserve">
+    <value>Error al actualizar el certificado.</value>
+  </data>
+  <data name="CfdiStampedFailed" xml:space="preserve">
+    <value>El CFDI no pudo ser emitido.</value>
+  </data>
+  <data name="CsdNotFound" xml:space="preserve">
+    <value>No se encontró CSD</value>
+  </data>
+  <data name="DuplicateCfdi" xml:space="preserve">
+    <value>El comprobante ya fue timbrado previamente.</value>
+  </data>
+  <data name="ErrorGeneratingCadenaOriginal" xml:space="preserve">
+    <value>Error al generar la cadena original.</value>
+  </data>
+  <data name="ErrorSendingMail" xml:space="preserve">
+    <value>Error al enviar un correo.</value>
+  </data>
+  <data name="FailedToFindItem" xml:space="preserve">
+    <value>Error al buscar el elemento.</value>
+  </data>
+  <data name="FiscalValidationFailed" xml:space="preserve">
+    <value>Se detectaron errores fiscales que impiden timbrar el CFDI.</value>
+  </data>
+  <data name="GenericError" xml:space="preserve">
+    <value>Lo sentimos ocurrió un error, favor de esperar un momento e intentar de nuevo.</value>
+  </data>
+  <data name="InsufficientStampBalance" xml:space="preserve">
+    <value>No hay saldo de timbres disponible para realizar el timbrado.</value>
+  </data>
+  <data name="InvalidCatalogCombination" xml:space="preserve">
+    <value>La combinación de {0} '{1}' con {2} '{3}' no está permitida por el SAT.</value>
+  </data>
+  <data name="InvalidCertificate" xml:space="preserve">
+    <value>El certificado del emisor es inválido.</value>
+  </data>
+  <data name="InvalidCfdiStructure" xml:space="preserve">
+    <value>La estructura del comprobante es incorrecta.</value>
+  </data>
+  <data name="InvalidCurrency" xml:space="preserve">
+    <value>La moneda '{0}' no existe en el catálogo c_Moneda.</value>
+  </data>
+  <data name="InvalidDigitalSeal" xml:space="preserve">
+    <value>El sello digital del comprobante es inválido.</value>
+  </data>
+  <data name="InvalidEmisorRegimen" xml:space="preserve">
+    <value>El régimen fiscal del emisor '{0}' no existe o no es válido.</value>
+  </data>
+  <data name="InvalidFormaMetodoPago" xml:space="preserve">
+    <value>La Forma de Pago '{0}' no es compatible con el Método de Pago '{1}'.</value>
+  </data>
+  <data name="InvalidObjetoImp" xml:space="preserve">
+    <value>El valor ObjetoImp '{0}' no existe en el catálogo c_ObjetoImp.</value>
+  </data>
+  <data name="InvalidProductServiceKey" xml:space="preserve">
+    <value>La clave de producto o servicio '{0}' no existe en el catálogo c_ClaveProdServ.</value>
+  </data>
+  <data name="InvalidReceptorRegimen" xml:space="preserve">
+    <value>El régimen fiscal del receptor '{0}' no existe o no es válido.</value>
+  </data>
+  <data name="InvalidRegimenUsoCfdi" xml:space="preserve">
+    <value>El UsoCFDI '{0}' no es válido para el régimen fiscal '{1}'.</value>
+  </data>
+  <data name="InvalidSchemaVersion" xml:space="preserve">
+    <value>La versión del esquema CFDI no es válida o no es soportada.</value>
+  </data>
+  <data name="InvalidTaxCombination" xml:space="preserve">
+    <value>La combinación de impuesto '{0}' con TipoFactor '{1}' no es válida.</value>
+  </data>
+  <data name="InvalidTaxFactor" xml:space="preserve">
+    <value>El TipoFactor '{0}' no existe en el catálogo c_TipoFactor.</value>
+  </data>
+  <data name="InvalidTaxKey" xml:space="preserve">
+    <value>El impuesto '{0}' no existe en el catálogo c_Impuesto.</value>
+  </data>
+  <data name="InvalidTipoComprobanteExportacion" xml:space="preserve">
+    <value>El Tipo de Comprobante '{0}' no permite el valor de Exportación '{1}'.</value>
+  </data>
+  <data name="InvalidTotals" xml:space="preserve">
+    <value>El subtotal, descuentos o total del comprobante no son consistentes.</value>
+  </data>
+  <data name="InvalidUnitKey" xml:space="preserve">
+    <value>La clave de unidad '{0}' no existe en el catálogo c_ClaveUnidad.</value>
+  </data>
+  <data name="InvalidUsoCfdi" xml:space="preserve">
+    <value>El UsoCFDI '{0}' no existe o no es válido.</value>
+  </data>
+  <data name="InvalidUuid" xml:space="preserve">
+    <value>El UUID generado es inválido.</value>
+  </data>
+  <data name="InvalidXmlEncoding" xml:space="preserve">
+    <value>El comprobante no utiliza la codificación UTF-8 requerida.</value>
+  </data>
+  <data name="InvalidXmlFormat" xml:space="preserve">
+    <value>El formato XML del comprobante no es válido.</value>
+  </data>
+  <data name="MissingCertificate" xml:space="preserve">
+    <value>Falta el certificado del emisor.</value>
+  </data>
+  <data name="MissingDigitalSeal" xml:space="preserve">
+    <value>Falta el sello digital del comprobante.</value>
+  </data>
+  <data name="MissingRequiredNode" xml:space="preserve">
+    <value>Falta uno o más nodos obligatorios en el comprobante.</value>
+  </data>
+  <data name="PacAuthorizationFailed" xml:space="preserve">
+    <value>Falló la autorización con el PAC.</value>
+  </data>
+  <data name="SchemaValidationFailed" xml:space="preserve">
+    <value>El comprobante no cumple con el esquema XSD del SAT.</value>
+  </data>
+  <data name="SealMismatch" xml:space="preserve">
+    <value>El sello digital no corresponde al certificado utilizado.</value>
+  </data>
+  <data name="TaxRequiredByObjetoImp" xml:space="preserve">
+    <value>El ObjetoImp '{0}' requiere la declaración de impuestos.</value>
+  </data>
+  <data name="TaxTotalMismatch" xml:space="preserve">
+    <value>El total de impuestos no coincide con el detalle de los conceptos.</value>
+  </data>
+  <data name="TimbradoServiceUnavailable" xml:space="preserve">
+    <value>El servicio de timbrado no se encuentra disponible.</value>
+  </data>
+  <data name="TimbradoTimeout" xml:space="preserve">
+    <value>El tiempo de espera para el timbrado fue excedido.</value>
+  </data>
+  <data name="UserCreateFailed" xml:space="preserve">
+    <value>Ocurrió un error al crear el usuario.</value>
+  </data>
+  <data name="UserDeleteFailed" xml:space="preserve">
+    <value>Error al eliminar usuario.</value>
+  </data>
+  <data name="UserEmailAlreadyExists" xml:space="preserve">
+    <value>El correo electrónico del usuario ya existe.</value>
+  </data>
+  <data name="UserNoAuthenticate" xml:space="preserve">
+    <value>Usuario no autentificado</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Usuario no encontrado.</value>
+  </data>
+  <data name="UserUpdateFailed" xml:space="preserve">
+    <value>Actualización de usuario fallida.</value>
+  </data>
+</root>
