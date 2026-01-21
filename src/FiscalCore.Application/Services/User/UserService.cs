@@ -6,7 +6,7 @@ using FiscalCore.Application.Interfaces.Message;
 using FiscalCore.Application.Interfaces.Security;
 using FiscalCore.Application.Interfaces.Users;
 using FiscalCore.Domain.Interfaces.Users;
-using System.Security.Cryptography.X509Certificates;
+using FluentValidation;
 
 namespace FiscalCore.Application.Services.User;
 
@@ -17,19 +17,27 @@ public sealed class UserService : IUserService
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _uow;
     private readonly IMessagesProvider _messagesProvider;
+    private readonly IValidator<CreateUserRequest> _validatorCreateUser;
+    private readonly IValidator<UpdateUserRequest> _validatorUpdateUser;
+
+
 
     public UserService(
         ILogService logService,
         IEncryptionService encryptionService,
         IUserRepository userRepository,
         IUnitOfWork uow,
-        IMessagesProvider messagesProvider)
+        IMessagesProvider messagesProvider,
+        IValidator<CreateUserRequest> validatorCreateUser,
+        IValidator<UpdateUserRequest> validatorUpdateUser)
     {
         _logService = logService;
         _encryptionService = encryptionService;
         _userRepository = userRepository;
         _uow = uow;
         _messagesProvider = messagesProvider;
+        _validatorCreateUser = validatorCreateUser;
+        _validatorUpdateUser = validatorUpdateUser;
     }
 
     public async Task<UserResponse> GetByIdAsync(Guid id)
@@ -50,7 +58,20 @@ public sealed class UserService : IUserService
 
         try
         {
-            // 1️ verifica si el usuario existente
+            // 1 Validar request
+            var validationResult = _validatorCreateUser.Validate(userRequest);
+
+            if (!validationResult.IsValid)
+            {
+                IEnumerable<ResponseErrorDetailDto> errors = validationResult.Errors.Select(e => new ResponseErrorDetailDto
+                {
+                    Field = e.PropertyName,
+                    Message = e.ErrorMessage
+                });
+                return ResponseFactory.Error(_messagesProvider.GetError("UserCreateFailed"), errors);
+            }
+
+            // 2 verifica si el usuario existente
             var userExists = await _userRepository.GetByEmailAsync(userRequest.Email);
             if (userExists is not null)
             {
@@ -67,13 +88,13 @@ public sealed class UserService : IUserService
             }
 
 
-            // 2️ crea el usuario
+            // 3 crea el usuario
             var entity = new Domain.Entities.User
             {
                 Id = Guid.NewGuid(),
                 Email = userRequest.Email,
                 Username = userRequest.Username,
-                PasswordHash = _encryptionService.Encrypt(userRequest.PasswordHash),
+                PasswordHash = _encryptionService.Encrypt(userRequest.Password),
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
@@ -100,7 +121,20 @@ public sealed class UserService : IUserService
 
         try
         {
-            // 1️ Obtener usuario existente
+            // 1 Validar request
+            var validationResult = _validatorUpdateUser.Validate(userRequest);
+
+            if (!validationResult.IsValid)
+            {
+                IEnumerable<ResponseErrorDetailDto> errors = validationResult.Errors.Select(e => new ResponseErrorDetailDto
+                {
+                    Field = e.PropertyName,
+                    Message = e.ErrorMessage
+                });
+                return ResponseFactory.Error(_messagesProvider.GetError("UserUpdateFailed"), errors);
+            }
+
+            // 2 Obtener usuario existente
             var user = await _userRepository.GetByIdAsync(userRequest.Id);
 
             if (user is null)
@@ -118,7 +152,7 @@ public sealed class UserService : IUserService
             }
 
 
-            // 2️ Validar email duplicado
+            // 3 Validar email duplicado
             var emailExists = await _userRepository.EmailExistsAsync(userRequest.Email, user.Id);
 
             if (emailExists)
@@ -135,7 +169,7 @@ public sealed class UserService : IUserService
                 return ResponseFactory.Error(_messagesProvider.GetError("UserUpdateFailed"), errors);
             }
 
-            // 3 Actualizar propiedades
+            // 4 Actualizar propiedades
             user.Username = userRequest.Username;
             user.Email = userRequest.Email;
             user.IsActive = userRequest.IsActive;

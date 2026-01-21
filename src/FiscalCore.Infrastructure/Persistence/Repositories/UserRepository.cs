@@ -1,5 +1,4 @@
 ﻿using FiscalCore.Domain.Interfaces.Users;
-using FiscalCore.Infrastructure.Persistence.Context;
 
 namespace FiscalCore.Infrastructure.Persistence.Repositories;
 

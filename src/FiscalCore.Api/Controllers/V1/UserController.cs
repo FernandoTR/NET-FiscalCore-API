@@ -3,11 +3,8 @@ using FiscalCore.Application.DTOs.Common;
 using FiscalCore.Application.DTOs.Users;
 using FiscalCore.Application.Interfaces.Message;
 using FiscalCore.Application.Interfaces.Users;
-using FiscalCore.Domain.Interfaces.Users;
-using FiscalCore.Infrastructure.Persistence.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace FiscalCore.Api.Controllers.V1;
 
@@ -101,7 +98,7 @@ public class UserController : Controller
     /// </summary>
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ResponseSuccessDto<UserResponse>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ResponseDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ResponseErrorDto), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
     {
         var user = await _userService.GetByIdAsync(id);

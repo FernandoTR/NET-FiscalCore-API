@@ -4,6 +4,7 @@ using FiscalCore.Application.Interfaces.Logging;
 using FiscalCore.Application.Interfaces.Message;
 using FiscalCore.Application.Interfaces.Security;
 using FiscalCore.Domain.Interfaces.Auth;
+using FiscalCore.Domain.Interfaces.Certificates;
 using FiscalCore.Domain.Interfaces.Users;
 using FiscalCore.Infrastructure.Logging;
 using FiscalCore.Infrastructure.Persistence;
@@ -34,6 +35,8 @@ public static class DependencyInjection
         // Repository
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAuthTokenRepository, AuthTokenRepository>();
+        services.AddScoped<ICertificateRepository, CertificateRepository>();
+
 
 
 
