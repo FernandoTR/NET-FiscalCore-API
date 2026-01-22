@@ -153,6 +153,9 @@
   <data name="CfdiStampedFailed" xml:space="preserve">
     <value>El CFDI no pudo ser emitido.</value>
   </data>
+  <data name="CfdiXsdValidationFailed" xml:space="preserve">
+    <value>Error en la validación de CfdiXsd.</value>
+  </data>
   <data name="CsdNotFound" xml:space="preserve">
     <value>No se encontró CSD</value>
   </data>

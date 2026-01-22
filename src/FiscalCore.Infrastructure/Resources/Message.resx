@@ -129,6 +129,12 @@
   <data name="CertificateUpdateSuccessfully" xml:space="preserve">
     <value>Certificado actualizado con éxito.</value>
   </data>
+  <data name="InternalValidationPassed" xml:space="preserve">
+    <value>Validación interna superada.</value>
+  </data>
+  <data name="OriginalStringCreatedSuccessfully" xml:space="preserve">
+    <value>La cadena original fue creada correctamente.</value>
+  </data>
   <data name="SchemaValidationSuccessfully" xml:space="preserve">
     <value>Validación del esquema realizada con éxito.</value>
   </data>
