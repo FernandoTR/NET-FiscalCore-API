@@ -1,5 +1,6 @@
 ﻿using FiscalCore.Application.Abstractions;
 using FiscalCore.Application.Interfaces.Auth;
+using FiscalCore.Application.Interfaces.Caching;
 using FiscalCore.Application.Interfaces.Cfdis;
 using FiscalCore.Application.Interfaces.Logging;
 using FiscalCore.Application.Interfaces.Message;
@@ -19,6 +20,7 @@ using FiscalCore.Infrastructure.Persistence.Stores;
 using FiscalCore.Infrastructure.Persistence.UnitOfWork;
 using FiscalCore.Infrastructure.Security.Encryption;
 using FiscalCore.Infrastructure.Security.Jwt;
+using FiscalCore.Infrastructure.Services.Caching;
 using FiscalCore.Infrastructure.Services.MessagesProvider;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -53,7 +55,7 @@ public static class DependencyInjection
         services.AddScoped<ICfdiXmlStore, CfdiXmlStore>();
         services.AddScoped<ICfdiPdfStore, CfdiPdfStore>();
         services.AddScoped<ICfdiStatusHistoryStore, CfdiStatusHistoryStore>();
-        services.AddScoped<ISatCatalogStore, SatCatalogStore>();
+        services.AddScoped<SatCatalogStore>();
 
 
         services.AddScoped<IOriginalStringGeneratorService, OriginalStringGeneratorService>();
@@ -61,6 +63,7 @@ public static class DependencyInjection
         services.AddScoped<ICfdiSealService, CfdiSealService>();
         services.AddScoped<ICfdiValidateXmlStructure, CfdiValidateXmlStructure>();
         services.AddScoped<ICfdiXmlBuilder, CfdiXmlBuilder>();
+        services.AddScoped<ISatCatalogWarmupService, SatCatalogWarmupService>();
 
         // Pac
         services.AddScoped<IPacStampingService, FakeStampingService>();
