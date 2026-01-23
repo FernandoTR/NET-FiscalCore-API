@@ -1,8 +1,10 @@
 ﻿using FiscalCore.Application.Interfaces.Auth;
 using FiscalCore.Application.Interfaces.Certificate;
+using FiscalCore.Application.Interfaces.Cfdis;
 using FiscalCore.Application.Interfaces.Users;
 using FiscalCore.Application.Services.Auth;
 using FiscalCore.Application.Services.Certificate;
+using FiscalCore.Application.Services.Cfdi;
 using FiscalCore.Application.Services.User;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,10 @@ public static class DependencyInjection
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<ICertificateService, CertificateService>();
+        services.AddScoped<ICfdiFiscalRulesValidatorService, CfdiFiscalRulesValidatorService>();
+        services.AddScoped<ICfdiTotalsValidatorService, CfdiTotalsValidatorService>();
+        services.AddScoped<ICfdiPersistenceService, CfdiPersistenceService>();
+        services.AddScoped<ICreateAndStampCfdiService, CreateAndStampCfdiService>();
 
 
 

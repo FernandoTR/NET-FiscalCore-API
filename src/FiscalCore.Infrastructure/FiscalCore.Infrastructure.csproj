@@ -25,4 +25,10 @@
     <ProjectReference Include="..\FiscalCore.Domain\FiscalCore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="CfdiBuilder\Schemas\Cfdi40\**\*.xsd" />
+    <EmbeddedResource Include="CfdiBuilder\Schemas\Xslt\**\*.xslt" />
+    <EmbeddedResource Include="CfdiBuilder\Schemas\TimbreFiscal\**\*.xsd" />
+  </ItemGroup>
+  
 </Project>
