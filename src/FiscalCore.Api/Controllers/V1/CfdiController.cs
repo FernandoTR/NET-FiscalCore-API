@@ -15,10 +15,12 @@ namespace FiscalCore.Api.Controllers.V1;
 public class CfdiController : Controller
 {
     private readonly ICreateAndStampCfdiService _createAndStampCfdiService;
+    private readonly ICfdiPdfGenerator _cfdiPdfGenerator;
 
-    public CfdiController(ICreateAndStampCfdiService createAndStampCfdiService)
+    public CfdiController(ICreateAndStampCfdiService createAndStampCfdiService, ICfdiPdfGenerator cfdiPdfGenerator)
     {
         _createAndStampCfdiService = createAndStampCfdiService;
+        _cfdiPdfGenerator = cfdiPdfGenerator;
     }
 
 
@@ -39,7 +41,6 @@ public class CfdiController : Controller
 
         return Ok(result);
     }
-
 
 
 

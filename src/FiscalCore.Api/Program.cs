@@ -4,6 +4,7 @@ using FiscalCore.Application;
 using FiscalCore.Infrastructure;
 using FiscalCore.Infrastructure.Security.Encryption;
 using FiscalCore.Infrastructure.Security.Jwt;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
@@ -99,6 +100,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
     });
 }
+
+app.UseHangfireDashboard("/hangfire");
 
 
 app.UseHttpsRedirection();
