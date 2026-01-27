@@ -1,4 +1,5 @@
-﻿using FiscalCore.Application.Interfaces.Auth;
+﻿using FiscalCore.Application.BackgroundJobs;
+using FiscalCore.Application.Interfaces.Auth;
 using FiscalCore.Application.Interfaces.Certificate;
 using FiscalCore.Application.Interfaces.Cfdis;
 using FiscalCore.Application.Interfaces.Users;
@@ -27,6 +28,11 @@ public static class DependencyInjection
         services.AddScoped<ICfdiTotalsValidatorService, CfdiTotalsValidatorService>();
         services.AddScoped<ICfdiPersistenceService, CfdiPersistenceService>();
         services.AddScoped<ICreateAndStampCfdiService, CreateAndStampCfdiService>();
+        services.AddScoped<ICfdiPdfGenerationService, CfdiPdfGenerationService>();
+
+        // Register Background Jobs
+        services.AddScoped<GenerateAndPersistCfdiPdfJob>();
+        services.AddScoped<SendCfdiEmailJob>();
 
 
 

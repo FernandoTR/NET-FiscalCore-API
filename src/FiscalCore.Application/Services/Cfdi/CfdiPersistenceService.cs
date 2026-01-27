@@ -1,11 +1,14 @@
 ﻿using FiscalCore.Application.Abstractions;
+using FiscalCore.Application.BackgroundJobs;
 using FiscalCore.Application.DTOs.Cfdis;
 using FiscalCore.Application.DTOs.Common;
 using FiscalCore.Application.DTOs.Pac;
 using FiscalCore.Application.Interfaces.Cfdis;
 using FiscalCore.Application.Interfaces.Logging;
+using FiscalCore.Domain.Entities;
 using FiscalCore.Domain.Interfaces.Cfdis;
 using FiscalCore.Domain.Interfaces.Stamping;
+using FiscalCore.Domain.Interfaces.Users;
 
 namespace FiscalCore.Application.Services.Cfdi;
 
@@ -18,6 +21,8 @@ public sealed class CfdiPersistenceService : ICfdiPersistenceService
     private readonly ICfdiStatusHistoryStore _cfdiStatusHistoryStore;
     private readonly IStampMovementRepository _stampMovementRepository;
     private readonly IStampBalanceRepository _balanceRepository;
+    private readonly ICfdiBackgroundJobDispatcher _cfdiBackgroundJobDispatcher;
+    private readonly IUserRepository _userRepository;
 
     public CfdiPersistenceService(
         ILogService logService,
@@ -26,7 +31,9 @@ public sealed class CfdiPersistenceService : ICfdiPersistenceService
         ICfdiXmlStore cfdiXmlStore,
         ICfdiStatusHistoryStore cfdiStatusHistoryStore,
         IStampMovementRepository stampMovementRepository,
-        IStampBalanceRepository balanceRepository)
+        IStampBalanceRepository balanceRepository,
+        ICfdiBackgroundJobDispatcher cfdiBackgroundJobDispatcher,
+        IUserRepository userRepository)
     {
         _logService = logService;
         _uow = uow;
@@ -35,6 +42,8 @@ public sealed class CfdiPersistenceService : ICfdiPersistenceService
         _cfdiStatusHistoryStore = cfdiStatusHistoryStore;
         _stampMovementRepository = stampMovementRepository;
         _balanceRepository = balanceRepository;
+        _cfdiBackgroundJobDispatcher = cfdiBackgroundJobDispatcher;
+        _userRepository = userRepository;
     }
 
     public async Task<ResponseDto> ExecuteAsync(PacStampingDto pacStampingResult, CreateCfdiRequest createCfdiRequest, Guid userId, Guid stampBalanceId)
@@ -43,6 +52,9 @@ public sealed class CfdiPersistenceService : ICfdiPersistenceService
 
         try
         {
+            // Obtener información del usuario
+            var user = await _userRepository.GetByIdAsync(userId);
+
             // Persistir el CFDI
             var cfdi = new Domain.Entities.Cfdi
             {
@@ -101,6 +113,12 @@ public sealed class CfdiPersistenceService : ICfdiPersistenceService
             await _uow.SaveChangesAsync();
             await _uow.CommitAsync();
 
+            // 🔔 Disparar job en background
+            _cfdiBackgroundJobDispatcher.EnqueueGeneratePdfAndSendEmail(
+                cfdi.Id,
+                pacStampingResult.Xml,
+                user.Email
+            );
 
             return ResponseFactory.Success("CFDI guardado exitosamente.");
         }
