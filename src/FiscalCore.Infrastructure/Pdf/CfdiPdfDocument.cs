@@ -91,7 +91,7 @@ public sealed class CfdiPdfDocument : IDocument
 
             row.RelativeItem().AlignRight().Column(col =>
             {
-                col.Item().PaddingHorizontal(22).Text($"Factura #{comprobante.Attribute("Folio")?.Value}").Bold().FontSize(12);
+                //col.Item().PaddingHorizontal(22).Text($"Factura #{comprobante.Attribute("Folio")?.Value}").Bold().FontSize(12);
                 col.Item().Background(Colors.Grey.Lighten1).AlignCenter().Text("FOLIO").SemiBold();
                 col.Item().AlignCenter().Text($"{comprobante.Attribute("Folio")?.Value}");
                 col.Item().Background(Colors.Grey.Lighten1).AlignCenter().Text("FECHA DE EMISION").SemiBold();
