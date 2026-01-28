@@ -2,6 +2,7 @@
 using FiscalCore.Application.DTOs.Cfdis;
 using FiscalCore.Application.DTOs.Common;
 using FiscalCore.Application.Interfaces.Cfdis;
+using FiscalCore.Application.Services.Cfdi;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +16,12 @@ namespace FiscalCore.Api.Controllers.V1;
 public class CfdiController : Controller
 {
     private readonly ICreateAndStampCfdiService _createAndStampCfdiService;
-    private readonly ICfdiPdfGenerator _cfdiPdfGenerator;
+    private readonly ICfdiQueryService _cfdiQueryService;
 
-    public CfdiController(ICreateAndStampCfdiService createAndStampCfdiService, ICfdiPdfGenerator cfdiPdfGenerator)
+    public CfdiController(ICreateAndStampCfdiService createAndStampCfdiService, ICfdiQueryService cfdiQueryService)
     {
         _createAndStampCfdiService = createAndStampCfdiService;
-        _cfdiPdfGenerator = cfdiPdfGenerator;
+        _cfdiQueryService = cfdiQueryService;
     }
 
 
@@ -42,6 +43,22 @@ public class CfdiController : Controller
         return Ok(result);
     }
 
+
+    /// <summary>
+    /// Recupera un CFDI por su UUID (Folio Fiscal SAT)
+    /// </summary>
+    [HttpGet("{uuid:guid}")]
+    [ProducesResponseType(typeof(ResponseSuccessDto<CfdiFullResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorDto), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetByUuid(Guid uuid)
+    {
+        var result = await _cfdiQueryService.GetByUuidAsync(uuid);
+
+        if (!result.IsSuccess)
+            return BadRequest(result);
+
+        return Ok(result);
+    }
 
 
 }

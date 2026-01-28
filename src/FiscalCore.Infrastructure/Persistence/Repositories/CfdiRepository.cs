@@ -18,6 +18,12 @@ public class CfdiRepository : ICfdiRepository
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 
+    public async Task<Cfdi?> GetByUuidAsync(Guid uuid)
+    {
+        return await _context.Cfdis
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Uuid == uuid);
+    }
 
     public void Add(Cfdi cfdi)
     {
