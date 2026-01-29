@@ -31,4 +31,20 @@ public sealed class FileStorageService : IFileStorageService
 
         return filePath;
     }
+
+    public async Task<byte[]> ReadAsync(
+        string fileName,
+        string folder,
+        CancellationToken ct)
+    {
+        var filePath = Path.Combine(_basePath, folder, fileName);
+
+        if (!File.Exists(filePath))
+            throw new FileNotFoundException(
+                $"El archivo no existe en la ruta configurada.",
+                filePath);
+
+        return await File.ReadAllBytesAsync(filePath, ct);
+    }
+
 }

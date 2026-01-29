@@ -30,8 +30,9 @@ public static class DependencyInjection
         services.AddScoped<ICreateAndStampCfdiService, CreateAndStampCfdiService>();
         services.AddScoped<ICfdiPdfGenerationService, CfdiPdfGenerationService>();
         services.AddScoped<ICfdiQueryService, CfdiQueryService>();
+        services.AddScoped<ICfdiPdfGenerateOrRegenerateService, CfdiPdfGenerateOrRegenerateService>();
 
-        
+
         // Register Background Jobs
         services.AddScoped<GenerateAndPersistCfdiPdfJob>();
         services.AddScoped<SendCfdiEmailJob>();
