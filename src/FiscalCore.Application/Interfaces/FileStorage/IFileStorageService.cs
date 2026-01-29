@@ -8,4 +8,11 @@ public interface IFileStorageService
         string fileName,
         string folder,
         CancellationToken ct);
+
+    Task<byte[]> ReadAsync(
+       string fileName,
+       string folder,
+       CancellationToken ct);
+
+
 }

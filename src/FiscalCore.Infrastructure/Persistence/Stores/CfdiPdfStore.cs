@@ -30,6 +30,16 @@ public sealed class CfdiPdfStore : ICfdiPdfStore
         return entity is null ? null : MapToDto(entity);
     }
 
+    public async Task<int> GetLastVersionAsync(Guid cfdiId)
+    {
+        int version = await _context.CfdiPdfs
+            .AsNoTracking()
+            .Where(p => p.CfdiId == cfdiId)
+            .MaxAsync(p => (int?)p.Version) ?? 0;
+
+        return version;
+    }
+
     public void Add(CfdiPdfDto dto)
     {
         var entity = MapToEntity(dto);

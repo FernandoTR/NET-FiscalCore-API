@@ -27,20 +27,27 @@ public sealed class CfdiPdfGenerationService : ICfdiPdfGenerationService
 
     public async Task<CfdiPdfGenerationResult> GenerateAsync(Guid cfdiId, string xmlContent, CancellationToken ct)
     {
+        var cfdiPdfId = Guid.NewGuid();
+        var fileName = $"{cfdiPdfId}.pdf";
+
         var pdfBytes = await _pdfGenerator.GenerateAsync(xmlContent);
 
         var filePath = await _fileStorage.SaveAsync(
             pdfBytes,
-            $"{cfdiId}.pdf",
+            fileName,
             "cfdis/pdfs",
             ct);
 
+        // Calcular versión
+        var lastVersion = await _cfdiPdfStore.GetLastVersionAsync(cfdiId);
+        var newVersion = lastVersion + 1;
+
         var pdf = new CfdiPdfDto
         {
-            Id = Guid.NewGuid(),
+            Id = cfdiPdfId,
             CfdiId = cfdiId,
             FilePath = filePath,
-            Version = 1,
+            Version = newVersion,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -49,7 +56,10 @@ public sealed class CfdiPdfGenerationService : ICfdiPdfGenerationService
 
         return new CfdiPdfGenerationResult(
             cfdiId,
+            cfdiPdfId,
             filePath,
+            fileName,
+            pdfBytes,
             pdf.Version
         );
     }
