@@ -129,6 +129,9 @@
   <data name="CertificateUpdateSuccessfully" xml:space="preserve">
     <value>Certificado actualizado con éxito.</value>
   </data>
+  <data name="CfdiResendSuccess" xml:space="preserve">
+    <value>Reenvío de CFDI exitoso</value>
+  </data>
   <data name="CfdiRetrievedSuccessfully" xml:space="preserve">
     <value>Cfdi recuperado exitosamente.</value>
   </data>

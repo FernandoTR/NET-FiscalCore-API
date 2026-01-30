@@ -25,7 +25,9 @@ public sealed class CfdiPdfStore : ICfdiPdfStore
     {
         var entity = await _context.CfdiPdfs
             .AsNoTracking()
-            .FirstOrDefaultAsync(p => p.CfdiId == cfdiId);
+            .Where(x => x.CfdiId == cfdiId)
+            .OrderByDescending(x => x.Version)
+            .FirstOrDefaultAsync();
 
         return entity is null ? null : MapToDto(entity);
     }

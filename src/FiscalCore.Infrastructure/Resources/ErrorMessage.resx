@@ -150,6 +150,12 @@
   <data name="CertificateUpdateFailed" xml:space="preserve">
     <value>Error al actualizar el certificado.</value>
   </data>
+  <data name="CfdiNotFound" xml:space="preserve">
+    <value>Cfdi no encontrado.</value>
+  </data>
+  <data name="CfdiResendFailed" xml:space="preserve">
+    <value>Error en el reenvío de Cfdi.</value>
+  </data>
   <data name="CfdiStampedFailed" xml:space="preserve">
     <value>El CFDI no pudo ser emitido.</value>
   </data>
@@ -176,6 +182,9 @@
   </data>
   <data name="GenericError" xml:space="preserve">
     <value>Lo sentimos ocurrió un error, favor de esperar un momento e intentar de nuevo.</value>
+  </data>
+  <data name="IncompleteFields" xml:space="preserve">
+    <value>Campos incompletos.</value>
   </data>
   <data name="InsufficientStampBalance" xml:space="preserve">
     <value>No hay saldo de timbres disponible para realizar el timbrado.</value>
