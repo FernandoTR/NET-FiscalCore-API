@@ -1,0 +1,1 @@
+﻿global using FiscalCore.Domain.Entities;
