@@ -63,6 +63,11 @@ builder.Services.AddApiVersioning(options =>
 
 
 // Authentication / Authorization
+var jwtOptions = builder.Configuration
+    .GetSection(JwtOptions.SectionName)
+    .Get<JwtOptions>()
+    ?? throw new InvalidOperationException("JWT options not configured.");
+
 builder.Services
     .AddAuthentication(options =>
     {
@@ -78,10 +83,10 @@ builder.Services
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
 
-            ValidIssuer = "FiscalFlow.API",
-            ValidAudience = "FiscalFlow.Client",
+            ValidIssuer = jwtOptions.Issuer,
+            ValidAudience = jwtOptions.Audience,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("CAMBIA_ESTA_CLAVE_LARGA_Y_SEGURA")
+                Encoding.UTF8.GetBytes(jwtOptions.SigningKey)
             )
         };
     });
